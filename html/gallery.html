@@ -1,0 +1,45 @@
+<section class="hero">
+	<div class="scrim"></div>
+	<div class="hero-container">
+		<h1>Featured Projects</h1>
+		<h3>Get Inspiration from Projects Created on Qoom</h3>	
+	</div>
+</section>
+<section>
+	<div class="project-list">
+		<h2>From Hackathons</h2>
+		<div id="projectsContainer-hackathon" class="content-area"></div>
+	</div>
+</section>
+<section>
+	<div class="project-list">
+		<h2>From Creator Group</h2>
+		<div id="projectsContainer-creator" class="content-area"></div>
+	</div>
+</section>
+<section>
+	<div class="project-list">
+		<h2>From Qoom members</h2>
+		<div id="projectsContainer-featured" class="content-area"></div>
+	</div>
+</section>
+<script type='module'>
+	import Gallery from '/libs/gallery/script.js';
+	const gallery = new Gallery({
+		tag: ['hackathon'],
+		locationToPut: 'projectsContainer-hackathon'
+	})
+	const galleryCreator = new Gallery({
+		tag: ['creator'],
+		locationToPut: 'projectsContainer-creator'
+	})
+	const galleryFeatured = new Gallery({
+		tag: ['featured'],
+		locationToPut: 'projectsContainer-featured'
+	})
+
+	gallery.render();
+	galleryCreator.render();
+	galleryFeatured.render();
+	
+</script>

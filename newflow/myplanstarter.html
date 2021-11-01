@@ -1,0 +1,104 @@
+<style>
+	.main-container {
+		display: block;
+		height: 100vh;
+		max-width: 1200px;
+		overflow: auto;
+		padding: 16px 64px;
+		position: relative;
+		width: 100%;
+	}
+	.main-container .page-title {
+		width: 100%;
+		margin: 40px 0;
+		border-bottom: 2px solid var(--color-gray-400);
+		padding: 24px 0;
+	}
+	.details-container {
+		width: 100%;
+		margin-bottom: 96px;
+	}
+	.details-container .details-title-container {
+		width: 100%;
+	}
+	.details-container .details-title-container .details-title {
+		text-transform: capitalize;
+	}
+	.details-container table {
+		width: 100%;
+		margin: 24px 0;
+		border-collapse: collapse;
+	}
+	.details-container table tr td {
+		line-height: 40px;
+		padding: 8px 0;
+	}
+	.details-container table .row-title {
+		width: 30%;
+		text-transform: capitalize;
+	}
+	.details-container table .row-contents {
+		width: 30%;
+	}
+	.details-container table .row-extra-info {
+		width: 20%;
+	}
+	.details-container table .row-button {
+		width: 20%;
+	}
+	@media (max-width: 1024px) {
+		.main-container {
+			padding: 0;
+		}
+		.main-container .page-title h2 {
+			margin: 9px 0;
+		}
+		.details-container {
+			padding: 0 46px;
+		}
+	}
+</style>
+
+<section class='main-container' id = ''>
+	<div class="page-title">
+		<div class='hamburgerIconContainer'><div class="hamburgerIcon"><i class="ic-menu white"></i></div></div>
+		<h2>My Plan & Payment</h2>
+	</div>
+	<div class='details-container'>
+		<div class='details-title-container'>
+			<h4 class='details-title'></h4>
+		</div>
+		<table>
+			<tr>
+				<td class='row-title'>coding space</td>
+				<td class='row-contents'>{{domain}}</td>
+				<td class='row-extra-info'></td>
+				<td class='row-button'></td>
+			</tr>
+			<tr>
+				<td class='row-title'>current plan</td>
+				<td class='row-contents'>{{plan}}</td>
+				<td class='row-extra-info'></td>
+				<td class='row-button'>
+					<button id="" class="qoom-main-btn qoom-button-full qoom-button-small" onclick="location.href='https://www.qoom.io/pricing'">upgrade to pro</button>
+				</td>
+			</tr>
+			<tr>
+				<td class='row-title'>valid</td>
+				<td class='row-contents'>{{validDate}}</td>
+				<td class='row-extra-info'>{{daysLeft}}</td>
+				<td class='row-button'>
+					<button id="" class="qoom-main-btn qoom-button-full qoom-button-small" onclick="location.href=''">extend</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class='details-container'>
+		<div class='details-title-container'>
+			<h6 class='details-title'>Payment History</h6>
+		</div>
+		<table>
+			<!--payment history as in subscription page-->
+		</table>
+	</div>
+</section>

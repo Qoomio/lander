@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+		<button id="loginmodaltest">LOGIN MODAL TEST</button>
+		<script type="module">
+			import Modal from '/libs/modal/script.js';
+
+			let $loginmodaltest = document.getElementById('loginmodaltest');
+
+			const $loginModal = new Modal({
+				modalContainerId : 'loginModal'
+				, modalTitleText: 'LOG IN'
+				, modalContentsInnerHTML:`
+					<span class="error" style="font-size: 14px; margin-bottom: 24px;">This email is already taken. Please log in.</span>
+					<div class="col-lg-12">
+			            <div class="form-input">
+			                <div class="input-items default empty">
+			                    <input id='' type="text" placeholder="">
+			                </div>
+			            </div> 
+			            <div class="form-input">
+			            	<div class="input-items default empty">
+			                    <input id='' type="text" placeholder="Password">
+			                </div>
+			            </div>
+			        </div>
+			        <div class="form-input password-reset">
+			        	<a class="qoom-button-link" href="https://${location.host}/admin/forgotpassword" eid="login-resetpw">Forgot Password?</a>
+			        </div>
+				`
+				, modalSubmitBtnText: 'Let me in'
+				, modalSubmitBtnAction: function(){
+					console.log('loggin in.')
+				}
+				, modalSubmitBtnEid: 'login-submit'
+				, modalExtraContentsHTML: `
+					<div class="create-one" style="margin-top: 24px;">
+			        	No Account? <a class="qoom-button-link" href="https://www.qoom.io/pricing" eid="login-signup">Create One</a>
+			        </div>
+				`
+			});			
+			
+			$loginmodaltest.addEventListener('click', function(){
+				$loginModal.show();
+			})
+
+		</script>
+	</body>
+</html>

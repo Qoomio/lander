@@ -1,0 +1,99 @@
+<section class="hero">
+	<div class="scrim"></div>
+	<div class="hero-container">
+		<h1>Tutorials</h1>
+		<h3>Starter Projects & Coding Blocks</h3>
+	</div>
+</section>
+<section>
+	<div class="tutorial-list"></div>
+</section>
+<script type='module'>
+	/* Where we are putting the cards */
+	const $main = document.querySelector('.tutorial-list');
+
+	/* The variable to store the data */
+	let data;
+
+	/* Function to bind a card */
+	function bindItem(item) {
+		/* Creating a new div element */
+		const div = document.createElement('div');
+
+		/* Injecting data into the template of our card */
+		const card = `
+					<a href='${item.link}' target='_blank'>
+						<div class="tutorial-title">${item.title}</div>
+						<div>You will learn:</div>
+						<div class="tutorial-components">${item.components}</div>
+						<div class="tutorial-language">${item.language}</div>
+						${ item.author 
+							? '<div class="tutorial-author">'
+									+ '<span>Author:</span>'
+									+ '<img src="https://' + item.author  + '/profile/avatar"></span>'
+									+ '<span class="tutorial-author-path" data-path="' + item.author + '"></span>'
+								+ '</div>'
+							: ''
+						}
+					</a>
+					<img src="${item.image}" class="tutorial-image">`;
+
+		/* Injecting the template into our div*/
+		div.innerHTML = card;
+
+		/* Adding the card to the main element */
+		$main.appendChild(div);
+	}
+
+	/* Function to bind all the cards to the data */
+	function bindData(data) {
+
+		/* Clearing out the contents in the main section */
+		$main.innerHTML = '';
+
+		/* Looping through each card and binding it to html */
+		data.forEach(bindItem);
+		
+		/* Fetching Author Data */
+		const $authors = Array.from(document.getElementsByClassName('tutorial-author-path'))
+			, authors = $authors.map($author => $author.getAttribute('data-path')).filter(a => a)
+			, uniqueAuthors = [...new Set(authors)]
+		;		
+		
+		Promise
+			.all(uniqueAuthors.map(a => fetch(`https://${a}/profile/name`)))
+			.then((responses) => {
+				Promise
+					.all(responses.map(r => r.json()))
+					.then(jsons => {
+						const names = jsons.reduce((o, v) => {
+							o[v.host] = v.name;
+							return o;
+						}, {})
+						$authors.forEach($author => {
+							$author.innerText = names[$author.getAttribute('data-path')] || '';
+						})
+					})
+					.catch(e => e);
+			})
+			.catch(e => e)
+		
+
+	}
+
+	async function fetchData() {
+		/* Making the request for `data.json` */
+		const response = await fetch('/libs/tutorials/tutorials.json');
+
+		/* Converting the data into a `Javascript Object` */
+		const json = await response.json();
+
+		/* Storing the data into our variable */
+		data = json;
+
+		/* Calling Bind Data */
+		bindData(data)
+	}
+
+	fetchData();
+</script>

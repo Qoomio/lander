@@ -1,0 +1,199 @@
+/*===========================
+	PRICING PAGE CSS
+===========================*/
+
+.container {
+	max-width: 1140px;
+	padding: 80px 16px 120px;
+}
+.page-title > h6 {
+	font-size: 18px;
+	margin-top: 1.5rem;
+	width: 75%;
+	margin: 1.5rem auto 0;
+}
+@media (max-width: 767px) {
+	.container {
+		padding: 40px 16px 80px;
+	}
+	.page-title > h6 {
+		width: 100%;
+	}
+}
+.pricing {
+  -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  border-radius: 8px;
+  padding: 40px 24px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+}
+.pricing-header {
+	min-height: 118px;
+}
+.pricing-header > div {
+	width: 80px;
+	height: 80px;
+	margin: 0 auto;
+}
+.pricing-header > div > i {
+	width: 100%;
+	height: 100%;
+}
+.pricing-header > h2 {
+  color: var(--color-primary);
+  font-weight: 500;
+  line-height: 1.5;
+  position: relative;
+  padding-bottom: 8px;
+  text-align: center;
+}
+.pricing-header > h6 {
+	color: var(--color-primary);
+	font-weight: 300;
+	line-height: 1.5;
+	margin: 8px -8px;
+	padding: 0 8px;
+	position: relative;
+	text-align: center;
+}
+.pricing .pricing-list {
+	background-color: var(--color-gray-10);
+	margin: 24px -24px;
+	padding: 16px 0;
+	min-height: 280px;
+}
+.pricing .pricing-list ul li {
+  color: var(--text-dark-high);
+  display: flex;
+  flex-flow: column no-wrap;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  margin-top: 8px;
+  padding: 0 24px;
+}
+.pricing .pricing-list ul li i {
+	display: block;
+	flex-shrink: 0;
+	width:16px;
+	height: 16px;
+	margin-right: 12px;
+	margin-top: 4px;
+}
+.pricing .pricing-list ul li span {
+	font-weight: 500;
+}
+.pricing .price {
+	margin: 24px 0;
+}
+.pricing .price h2 {
+  display: block;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-primary);
+  text-align: center;
+}
+.pricing .price p {
+	color: var(--text-dark-medium);
+	font-weight: 300;
+	line-height: 1.25;
+	text-align: center;
+}
+.pricing .pricing-button {
+  margin-top: 16px;
+  text-align: center;
+}
+.pricing .pricing-button a {
+	min-width: 120px;
+	width: 75%;
+}
+.promotion-note {
+	color: var(--text-dark-medium);
+	font-size: 14px;
+	line-height: 1.5;
+	margin-top: 40px;
+}
+
+  /*=========== ETC ===============*/
+  
+ .dollar::before {
+	content: '$ ';
+}
+ 
+ /*=========== STARTER OPTIONS MODAL ===============*/
+
+#starterPassModal .modal-container .modal-description {
+	margin-bottom: 0;
+}
+#starterPassModal .modal-container .modal-description div {
+	margin-bottom: 0;
+}
+
+#starterPassModal table {
+	width: 100%;
+	border-collapse: collapse;
+}
+#starterPassModal table tr td {
+	padding: 16px 8px;
+}
+#starterPassModal table tr:nth-child(2) > td {
+	border-top: 1px solid var(--color-gray-400);
+	border-bottom: 1px solid var(--color-gray-400);
+}
+#starterPassModal .pass-name {
+	width: 55%;
+	text-transform: capitalize;
+	line-height:40px;
+}
+#starterPassModal .pass-price {
+	width: 30%;
+}
+#starterPassModal .select-btn-container {
+	width: 15%;
+}
+#starterPassModal .dollar::before {
+	content: '$ ';
+}
+#starterPassModal .extra-note {
+	font-size: 12px;
+	text-transform: uppercase;
+	margin-left: 12px;
+	color: var(--color-red);
+}
+@media (max-width: 767px) {
+	#starterPassModal table tr {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	#starterPassModal table tr:nth-child(2) > td {
+		border: unset;
+	}
+	#starterPassModal table tr td {
+		padding: 8px 0;
+	}
+	#starterPassModal table tr td:first-child {
+		width: 65%;
+	}
+	#starterPassModal table tr td:nth-child(2){
+		width: 35%;
+	}
+	#starterPassModal table tr td:nth-child(3) {
+		width: 100%;
+    	border-bottom: 1px solid var(--color-gray-400);
+	}
+	#starterPassModal table tr.pass365 td:nth-child(3) {
+    	border-bottom: 1px solid #fff;
+	}
+	#starterPassModal .pass-price {
+		line-height: 40px;
+		text-align: right;
+	}
+	#starterPassModal .select-btn-container a {
+		width: 100%;
+	}
+}

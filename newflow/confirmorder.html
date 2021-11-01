@@ -1,0 +1,519 @@
+<style>
+	.container {
+		max-width: 1140px;
+	}	
+	.confirm-container {
+		width: 100vw;
+		max-width: 1140px;
+		justify-content: space-between;
+		display: flex;
+		flex-flow: row;
+		flex-wrap: nowrap;
+		margin-right: auto;
+		margin-left: auto;
+		padding: 0 24px;
+	}
+	
+	.left-container {
+		width: 60%;
+		padding: 32px 32px 32px 16px;
+	}
+	
+	.right-container {
+		position: -webkit-sticky;
+		position: sticky;
+		top: 20px;
+		height: fit-content;
+		height: -moz-fit-content;
+		height: -webkit-fit-content;
+		width: 40%;
+		padding: 32px 24px;
+		border-radius: 8px;
+		background-color: var(--color-gray-10);
+	}
+	.subcontainer{
+		margin-bottom: 48px;
+	}
+	.subcontainer h5 {
+		margin-bottom: 8px;
+		font-weight: 500;
+	}
+	.subcontainer .subtitle {
+		font-size: 14px;
+		color: var(--text-dark-medium);
+		margin-bottom: 24px;
+		margin-top: 16px;
+	}
+	.subcontainer .details {
+		width: 100%;
+		padding: 16px 0;
+		border-top: 1px solid var(--color-gray-100);
+		border-bottom: 1px solid var(--color-gray-100);
+	}
+	.subcontainer.your-info .details table tr td {
+		padding: 8px 0;
+	}
+	.subcontainer.your-info .details table tr td:first-child {
+		width: 150px;
+	}
+	.subcontainer.your-info .details table tr td:nth-child(2) {
+		text-align: left;
+		width: unset;
+	}
+	.order-details .applied-coupons {
+		display: block;
+	}
+	.price-unit {
+		font-size: 12px;
+		color: var(--text-dark-medium);
+	}
+	.form-input .input-items input
+	,.form-input .input-items-optional input {
+		font-size: 14px;
+	}
+	
+	/*STYLE FOR COUPON INPUT AND BUTTON*/
+	.coupon-button {
+		margin-top: 18px;
+	}
+	
+	/*STYLE FOR PAYMENT DETAILS*/
+	.payment-details .details {
+		border-top: unset;
+		border-bottom: unset;
+	}
+	.payment-details .details > div {
+		padding: 16px!important;
+	}
+	.payment-details .details > div:first-child {
+		border-top: 1px solid var(--color-gray-100);
+		border-bottom: 1px solid var(--color-gray-100);
+	}
+	.payment-details .details > div:nth-child(2) {
+		border-bottom: 1px solid var(--color-gray-100);
+	}
+	.payment-details .details div.selected {
+		background-color: var(--color-gray-10);
+	}
+	.payment-details .details label {
+		margin-left: 8px;
+	}
+	.payment-details .details .form-input {
+		margin-bottom: 0;
+	}
+	#payment-form {
+		margin-top: 16px;
+	}
+	.StripeElement {
+		background-color: #fff!important;
+		margin-bottom: 0!important;
+		padding: 8px!important;
+		/*!important just added to make these css happen in the testing page. it's not neccessary if this page is made in seprate page.*/
+	}
+	
+	/*STYLES FOR ORDER DETAILS*/
+	#paypalConfirmBtn {
+		background-color: #FFC439;
+		color: var(--text-dark-high);
+		text-transform: none;
+	}
+	.ic-paypal {
+		margin-right: 16px;
+		width: 100px;
+	}
+	#paypalConfirmBtn[disabled] {
+		background-color: var(--color-gray-200);
+		color: #fff;
+	}
+	.order-details .applied-coupons {
+		display: none;
+		width: 100%;
+		border-bottom: 1px solid var(--color-gray-100);
+		margin-bottom: 24px;
+		padding: 16px 0;
+	}
+	.order-details .applied-coupons .coupon-info-domain
+	, .order-details .applied-coupons .coupon-info-codingspace {
+		display: none;
+	}
+	.order-details .applied-coupons .coupon-info-domain.active
+	, .order-details .applied-coupons .coupon-info-codingspace.active {
+		display: table-row;
+	}
+	.order-details .applied-coupons table tr:nth-child(2) > td {
+		padding-bottom: 16px;
+	}
+	.order-details .applied-coupons table tr td:nth-child(2) {
+		width: 100px;
+		text-align: right;
+		vertical-align: top;
+		color: var(--color-red);
+	}
+	.order-details .applied-coupons table .coupon-description {
+		color: var(--color-red);
+	}
+	.order-details .applied-coupons table tr.coupon-code > td {
+		padding-top: 0;
+	}
+	.coupon-code {
+		font-size: 14px;
+		color: var(--text-dark-medium);
+	}
+	.subtraction::before {
+		content: '- ';
+	}
+	.order-details .total-amount-container {
+		display: flex;
+		flex-flow: row nowrap;
+		font-size: 20px;
+		font-weight: 500;
+		margin-top: 24px;
+		margin-bottom: 24px;
+	}
+	.order-details .total-amount-container > div:first-child {
+		flex-grow: 1;
+		text-align: left;
+	}
+	.order-details .total-amount-container .total-amount {
+		color: var(--color-primary);
+	}
+	.checkout-checkbox {
+		border-top: none;
+		margin: 24px 0 16px;
+		font-size: 14px
+	}
+	.checkout-checkbox ul li {
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: flex-start;
+		margin-bottom: 4px;
+	}
+	.checkout-checkbox ul li input {
+		margin-top: 2px;
+		margin-right: 8px;
+		width: 18px;
+		height: 18px;
+	}
+	.checkout-checkbox ul li label {
+		line-height: 18px;
+	}
+	.checkout-checkbox a {
+		text-decoration: none;
+		color: var(--color-primary);
+	}
+	.checkout-checkbox a {
+		color: var(--color-primary);
+		text-decoration: none;
+	}
+	.checkout-checkbox a:visited {
+		color: var(--color-primary);
+	}
+	.checkout-checkbox a:hover {
+		text-decoration: underline;
+	}
+	.dollar::before {
+		content: '$ ';
+	}
+	@media (max-width: 991px) {
+		.confirm-container {
+			flex-flow: column;
+			margin-top: 20px;
+			padding: 0 16px;
+			margin-bottom: 40px;
+		}
+		.left-container {
+			width: 100%;
+			padding: 0 16px;
+		}
+		.right-container {
+			width: 100%;
+			padding: 0 16px;
+			background-color: transparent;
+		}
+	}
+	@media (max-width: 577px) {
+		.container {
+			max-width: 100vw;
+		}
+		.confirm-container {
+			width: 100%;
+			padding: 0;
+		}
+		.subcontainer .details table .description > td {
+			width: 270px;
+		}
+		.subcontainer.coupon .col-lg-8 {
+			width: 100%;
+		}
+		.subcontainer.coupon .col-lg-8 .form-input {
+			margin-bottom: 0;
+		}
+		.form-input .input-items input
+		,.form-input .input-items-optional input {
+			font-size: 12px;
+		}
+	}
+	
+</style>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+	const subscriberPlans = {
+		monthly: "{{monthlyId}}"
+		, yearly: "{{yearlyId}}"
+	}
+</script>
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-12 page-title">
+           <h1>Confirm Your Order</h1> 
+        </div>
+    </div>
+	<div class="confirm-container">
+		<div class="left-container">
+			<div class="subcontainer your-info">
+				<h5 class="title">Your Information</h5>
+			    <div class="details">
+			        <table>
+			        	<tr>
+			        		<td>Email</td>
+			        		<td>{{email}}</td>
+			        	</tr>
+			        	<tr>
+			        		<td>Name</td>
+			        		<td>{{first}} {{last}}</td>
+			        	</tr>
+			        	<tr>
+			        		<td>Qoom URL</td>
+			        		<td>{{domain}}</td>
+			        	</tr>
+			        </table>
+			    </div>
+			</div>
+			<div class="subcontainer your-plan">
+				<h5 class="title">Your Plan</h5>
+			    <div class="details">
+			        <table>
+			        	<tr>
+			        		<td>{{productName}}</td>
+			        		<td class="product-price"><span class="dollar"></span>{{price}}</td>
+			        	</tr>
+			        </table>
+			    </div>
+			</div>
+			<div class="subcontainer coupon">
+	            <div class="row">
+			        <div class="col-lg-8">
+				        <div class="form-input">
+				            <label>Discount Code</label>
+				            <div class="input-items-optional default">
+				                <input type="text" placeholder="" value="" id='couponCode' data-pattern='^[A-Za-z0-9_-\s\#\.]+$ ' >  
+				            </div>
+				            <label id="invalidCouponMessage" style="display:none; color: var(--color-red);"></label>
+				        </div> <!-- form input -->
+				    </div>
+				    <div class="col-lg-4">
+				    	<div class="form-input">
+				        	<label></label>
+				        	<div class="qoom-main-btn qoom-button-full coupon-button" onclick="applyCoupon()">Apply</div>
+				    	</div>
+				    </div>
+	        	</div>
+	        </div>
+			<div class="subcontainer payment-details">
+				<h5>Payment</h5>
+				<div class="details">
+	        		<div>
+	        			<input type="radio" id="creditcard" name="payment" value="creditcard" checked="true">
+						<label for="creditcard">Credit or Debit Card</label>
+						<form action="/charge" method="post" id="payment-form">
+							<div class="row">
+								<div class="col-lg-12 form-input">
+									<div id="card-element">
+									<!-- A Stripe Element will be inserted here. -->
+									</div>
+								
+									<!-- Used to display Element errors. -->
+									<div id="card-errors" role="alert"></div>
+								</div>
+							</div>
+						</form>
+					</div>
+	        		<div>
+	        			<input type="radio" id="paypal" name="payment" value="paypal">
+						<label for="paypal">Paypal</label>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="right-container">
+			<div class="subcontainer order-details">
+		    	<h5>Your Information</h5>
+		    	<div class="details">
+		            <table>
+		            	<tr>
+			        		<td>{{productName}}</td>
+			        		<td class="product-price"><span class="dollar"></span>{{price}}</td>
+			        	</tr>
+		            	<!--coupon-->
+		            </table>
+		    	</div>
+		    	<div class="applied-coupons">
+		    		<table>
+		            	<tr class="first-text-line coupon-info">
+		            		<td><span id="couponDescription" class="coupon-description">One time promotion 15%</span></td>
+		            		<td><span class="subtraction"></span><span class="dollar"></span><span id="couponDiscountAmount" class="discount-amount">1.5</span></td>
+		            	</tr>
+		            	<tr class="coupon-code coupon-info">
+		            		<td id="couponCode">QOOM15</td>
+		            	</tr>
+		            	<!--coupon-->
+		            </table>
+		    	</div>
+		    	<div class="total-amount-container">
+		    		<div>Due Today:</div>
+		    		<div>
+		    			<span class="total-amount dollar">{{totalPrice}}</span>
+		    		</div>
+		    	</div>
+			    <div class="checkout-checkbox">
+			        <ul class="checkbox_common" id='tacs'>
+			            <li>
+			                <input type="checkbox" id="checkbox1">
+			                <label for="checkbox1">I agree to the Qoom <a href="/terms-of-service" target="_blank">Terms of Service</a> and <a href="/privacy" target="_blank">Privacy Policy</a>.</label>
+			            </li>
+			        </ul>
+			    </div>
+				<div class="checkout-btn">
+					<button id="confirmBtn" class="qoom-main-btn qoom-button-full" type="submit">Complete Order</button>
+					<input type='hidden' value='{{domainName}}' id='domainname'>
+				</div>
+				<div class="paypal-checkout-btn">
+					<button id="paypalConfirmBtn" class="qoom-main-btn qoom-button-full" type="submit"><i class="ic-paypal"></i>Checkout</button>
+					<input type='hidden' value='{{domainName}}' id='domainname'>
+				</div>
+		    </div>
+		</div>
+	</div>
+	<div class="domain-price"></div>
+	<div class="monthly-price"></div>
+	<div class="annual-price"></div>
+</section>
+<script>
+	var stripe = Stripe('{{stripeToken}}');
+	var elements = stripe.elements();
+	
+	var style = {
+	base: {
+		fontSize: '16px',
+		color: '#32325d',
+		},
+	};
+	
+	var card = elements.create('card', {style: style});
+	card.mount('#card-element');
+	
+	card.addEventListener('change', ({error}) => {
+	const displayError = document.getElementById('card-errors');
+	if (error) {
+			displayError.textContent = error.message;
+		} else {
+			displayError.textContent = '';
+		}
+	});
+	
+	var submitted = false;
+	
+	// Create a token or display an error when the form is submitted.
+	var form = document.getElementById('payment-form');
+	let paymentOptions = document.querySelectorAll('input[name="payment"]')
+		, paymentCard = document.querySelector('input[id="creditcard"]')
+		, paymentPaypal = document.querySelector('input[id="paypal"]')
+		, confirmBtn = document.getElementById('confirmBtn')
+		, stripePaymentForm = document.getElementById('payment-form')
+		, paypalConfirmBtn = document.getElementById('paypalConfirmBtn')
+		, $termsandconditions = document.querySelector('#tacs')
+		, tacTemplate = $termsandconditions.innerHTML
+		, tacData = {{TACDATA}}
+		, $couponCode = document.getElementById('couponCode')
+		, $invalidCouponMessage = document.getElementById('invalidCouponMessage')
+		;
+
+	function stripeTokenHandler(token) {
+		// Insert the token ID into the form so it gets submitted to the server
+		var form = document.getElementById('payment-form');
+		var hiddenInput = document.createElement('input');
+		hiddenInput.setAttribute('type', 'hidden');
+		hiddenInput.setAttribute('name', 'stripeToken');
+		hiddenInput.setAttribute('value', token.id);
+		form.appendChild(hiddenInput);
+		
+		var eid = '{{entityId}}' 
+		var m =  location.search.substr(1).match(/entity=([0-9a-f]*)/);
+		if(!m && !eid) {
+		  return alert('No entity given')
+		}
+		
+		var selected = document.querySelector('.selected');
+		var agreementKeys = Array.from($termsandconditions.querySelectorAll(':checked')).map(e => e.id).filter(v => v !== 'checkbox1');
+		// var domainCouponId = document.getElementById('domainCouponCode').getAttribute('data-id');
+		// var codingSpaceCouponId = document.getElementById('codingSpaceCouponCode').getAttribute('data-id');
+		
+		restfull.post({ path: '/work'
+			, data: { 
+				input: { 
+					payment: token
+					, plan: subscriberPlans[togglePaymentCycleBtn.checked ? 'yearly' : 'monthly']
+					, entity: eid || m[1]
+					, domainToPurchase
+					, agreementKeys
+					, contactinfo: Array.from($inputs)
+						.concat(Array.from($selects))
+						.reduce((o,f) => {
+							o[f.id] = f.value; 
+							return o;
+					}, {})
+					, domainCouponId
+					, codingSpaceCouponId
+				}
+			, name: 'qoom_subscription' 
+				} 
+			}, function(err, response) {
+				if (err) {
+					console.log(err);
+					return;
+				}
+				location.href = '/subscribe/signup-completed' + location.search
+			});
+	}
+
+	paymentCard.checked = true;
+	paymentCard.parentElement.classList.add('selected');
+	confirmBtn.style.display = 'block';
+	paypalConfirmBtn.style.display = 'none';
+	
+	paymentCard.addEventListener('click', (e) => {
+		paymentOptions.forEach(option => {
+			option.checked = false;
+			option.parentElement.classList.remove('selected');
+		})
+		paymentCard.checked = true;
+		paymentCard.parentElement.classList.add('selected');
+		confirmBtn.style.display = 'block';
+		stripePaymentForm.style.display = 'block';
+		paypalConfirmBtn.style.display = 'none';
+	})
+	paymentPaypal.addEventListener('click', (e) => {
+		paymentOptions.forEach(option => {
+			option.checked = false;
+			option.parentElement.classList.remove('selected');
+		})
+		paymentPaypal.checked = true;
+		paymentPaypal.parentElement.classList.add('selected');
+		confirmBtn.style.display = 'none';
+		stripePaymentForm.style.display = 'none';
+		paypalConfirmBtn.style.display = 'block';
+	})
+	
+	
+</script>

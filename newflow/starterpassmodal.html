@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			#starterPassModal .container {
+				padding: 12px;
+			}
+			#starterPassModal table {
+				width: 100%;
+				border-collapse: collapse;
+			}
+			#starterPassModal table tr td {
+				padding: 16px 8px;
+			}
+			#starterPassModal table tr:nth-child(2) > td {
+				border-top: 1px solid var(--color-gray-400);
+				border-bottom: 1px solid var(--color-gray-400);
+			}
+			#starterPassModal .pass-name {
+				width: 55%;
+				text-transform: uppercase;
+				line-height:40px;
+			}
+			#starterPassModal .pass-price {
+				width: 30%;
+			}
+			#starterPassModal .select-btn-container {
+				width: 15%;
+			}
+			.dollar::before {
+				content: '$ ';
+			}
+			.extra-note {
+				font-size: 12px;
+				text-transform: uppercase;
+				margin-left: 12px;
+			}
+			@media (max-width: 767px) {
+				#starterPassModal table tr {
+					display: flex;
+					flex-wrap: wrap;
+				}
+				#starterPassModal table tr:nth-child(2) > td {
+					border: unset;
+				}
+				#starterPassModal table tr td {
+					padding: 8px 0;
+				}
+				#starterPassModal table tr td:first-child {
+					width: 65%;
+				}
+				#starterPassModal table tr td:nth-child(2){
+					width: 35%;
+				}
+				#starterPassModal table tr td:nth-child(3) {
+					width: 100%;
+			    	border-bottom: 1px solid var(--color-gray-400);
+				}
+				#starterPassModal table tr.pass365 td:nth-child(3) {
+			    	border-bottom: 1px solid #fff;
+				}
+				#starterPassModal .pass-price {
+					line-height: 40px;
+				}
+				#starterPassModal .select-btn-container a {
+					width: 100%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<button id="starterPassModalTest">STARTER PASS MODAL TEST</button>
+		<script type="module">
+			import Modal from '/libs/modal/script.js';
+			let $starterpassmodaltest = document.getElementById('starterPassModalTest');
+
+
+
+			const $starterPassModal = new Modal({
+				modalContainerId: 'starterPassModal'
+				, modalTitleText: `Choose a Starter Pass`
+				, modalContentsInnerHTML: `
+				<div class="modal-description">
+					<table>
+						<tr class="pass30">
+							<td class="pass-name">30 days access</td>
+							<td class="pass-price"><span class="dollar"></span>10</td>
+							<td class="select-btn-container">
+								<button id="" class="qoom-main-btn qoom-button-full qoom-button-small">select</button>
+							</td>
+						</tr>
+						<tr class="pass90">
+							<td class="pass-name">90 days access</td>
+							<td class="pass-price"><span class="dollar"></span>24<span class="extra-note">save 20%</span></td>
+							<td class="select-btn-container">
+								<button id="" class="qoom-main-btn qoom-button-full qoom-button-small">select</button>
+							</td>
+						</tr>
+						<tr class="pass365">
+							<td class="pass-name">365 days access<span class="extra-note">best value</span></td>
+							<td class="pass-price"><span class="dollar"></span>60<span class="extra-note">save 50%</span></td>
+							<td class="select-btn-container">
+								<button id="" class="qoom-main-btn qoom-button-full qoom-button-small">select</button>
+							</td>
+						</tr>
+					
+					</table>
+				</div>
+				`
+			});
+
+			$starterpassmodaltest.addEventListener('click', function(){
+				$starterPassModal.show();
+			})
+
+		</script>
+		
+	</body>
+</html>

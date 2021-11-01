@@ -1,0 +1,80 @@
+section {
+	box-sizing: border-box;
+	width: 100vw;
+	padding: 96px 0;
+	color: var(--color-primary);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 300;
+}
+
+section>div {
+	width: 1280px;
+	padding-right: 2rem;
+	padding-left: 2rem;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.hero {
+	height: 360px;
+	color: var(--text-white-high);
+	background-image: url('/lander/assets/images/bg-gallery.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	position: relative;
+}
+
+.hero .scrim {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 360px;
+	background-color: var(--color-primary);
+	opacity: 0.18;
+}
+
+.hero-container {
+	align-items: center;
+	z-index: 0;
+}
+
+.hero h1 {
+	padding: 0.5rem 1rem;
+	background-color: #fff;
+	color: var(--color-primary);
+	font-size: 48px;
+	font-weight: 500;
+	text-align: center;
+	margin-bottom: 0.5em;
+}
+
+.hero h3 {
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+}
+
+.project-list h2 {
+	font-size: 1.5rem;
+	width: fit-content;
+	position: relative;
+}
+.project-list h2:before {
+	content: ' ';
+    width: 40px;
+    height: 4px;
+    position: absolute;
+    top: -20px;
+    left: calc(50% - 20px);
+    background-color: var(--color-green);
+}
+.project-list > div {
+	margin: 1.5rem 0;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<button id="signupmodaltest">SIGNUP MODAL TEST</button>
+		<script type="module">
+			import Modal from '/libs/modal/script.js';
+
+			let $signupmodaltest = document.getElementById('signupmodaltest');
+
+			const $signupModal = new Modal({
+				modalContainerId: 'signupModal'
+				, modalTitleText: `SIGN UP`
+				, modalContentsInnerHTML: `
+				<div class="modal-description" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+					<div class="form-input first" style="width: 48%;">
+						<div class="input-items default empty">
+							<input type="text" placeholder="First Name" id="">
+						</div>
+					</div>
+					<div class="form-input last" style="width: 48%;">
+						<div class="input-items default empty">
+							<input type="text" placeholder="Last Name" id="">
+						</div>
+					</div>
+					<div class="form-input" style="width: 100%;">
+						<div class="input-items default empty">
+							<input type="email" placeholder="Email" id="">
+						</div>
+					</div>
+					<div class="form-input" style="width: 100%;">
+						<div class="input-items default empty">
+							<input type="password" placeholder="Password" id="">
+						</div>
+					</div>
+				</div>
+				`
+				, modalSubmitBtnText: `Create Account`
+				, modalSubmitBtnAction: function(){
+					console.log('here comes the function :) ');
+				}
+				, modalExtraContentsHTML: `
+					<div class="" style="margin-top: 24px;">
+			        	Already have an account? <a class="qoom-button-link" href="https://www.qoom.io/subscribe/login">Log in</a>
+			        </div>
+				`
+			});
+
+			$signupmodaltest.addEventListener('click', function(){
+				$signupModal.show();
+			})
+
+		</script>
+		
+	</body>
+</html>

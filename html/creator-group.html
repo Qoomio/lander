@@ -1,0 +1,70 @@
+<section class="hero">
+	<div class="hero-container">
+		<h1>Qoom <span>Creator</span> Group</h1>
+		<!--<h3>Summer 2021 Application cohort is now opened.<br>Deadline is June 27. <a href="https://forms.gle/ou2FknxhFoP12Td76" target="_blank">Apply here!</a></h3>-->
+			<!--<br>-->
+		<!--<h3>-->
+		<!--	<a href="https://forms.gle/WbZ7KAf3D3Nh6qJQ7" target="_blank">Sign up here</a> to get notified when the application opens!-->
+		<!--</h3>	-->
+	</div>
+</section>
+<section class="what">
+	
+	<div class="what-container">
+		<!--<h2>What is Qoom Creator Group?</h2>-->
+		<div class="description">
+			<p>The <strong>Qoom Creator Group</strong> is an exclusive space for highschool and university students to work on real coding projects that impact Qoom products and community.</p>
+			<p>Through a mentorship with Qoom founders, students build their programming skills and collaborate with other Creators to bring their ideas to life.</p>
+		</div>
+	</div>
+</section>
+<section class="projects bg-lightgray">
+	<div class="project-container">
+		<h2>Project Showcase</h2>
+		<div id='projectShowcase'></div>
+	</div>
+</section>
+<section class="why bg-secondary">
+	<div class="why-container">
+		<h2>Why become a Creator?</h2>
+		<div class="description">
+			<div class="why-item">
+				<div><i class="ic-coding navy"></i></div>
+				<h4>Grow Your Skills</h4>
+				<p>Build real-world SW development skills. Plus, get mentored by Qoom founders</p>
+			</div>
+			<div class="why-item">
+				<div><i class="ic-editor navy"></i></div>
+				<h4>Build Your Resume</h4>
+				<p>Gain valuable experience that you can highlight to future employers.</p>
+			</div>
+			<div class="why-item">
+				<div><i class="ic-network navy"></i></div>
+				<h4>Expand Your Network</h4>
+				<p>Meet, collaborate and connect with like-minded people</p>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="creators">
+	<div class="creators-container">
+		<h2>Meet Our Creators</h2>
+		<div class="filter">
+			<div><input type="radio" name="cohort" value="all" id="all" checked><label for="all">All</label></div>
+			<div><input type="radio" name="cohort" value="Summer21" id="sm20"><label for="sm20">Summer21</label></div>
+			<div><input type="radio" name="cohort" value="Spring21" id="s20"><label for="s20">Spring21</label></div>
+			<div><input type="radio" name="cohort" value="Winter21" id="w21"><label for="w21">Winter21</label></div>
+			<div><input type="radio" name="cohort" value="Fall20" id="f20"><label for="f20">Fall20</label></div>
+		</div>
+		<div class="creators-list">
+		</div>
+	</div>
+</section>
+<script type='module'>
+	import Gallery from '/libs/gallery/script.js';
+	const gallery = new Gallery({
+		tag: ['creator'],
+		locationToPut: 'projectShowcase'
+	})
+	gallery.render();
+</script>
